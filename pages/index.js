@@ -10,8 +10,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Stock App</h1>
+        <h1 className="p-5 text-3xl font-bold">Stock App</h1>
       </main>
     </div>
-  )
+  );
 }
