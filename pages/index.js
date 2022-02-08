@@ -5,6 +5,8 @@ import Head from "next/head";
 export default function Home() {
   const { data: session } = useSession();
 
+  console.log(session);
+
   if (session) {
     return (
       <div>
@@ -14,10 +16,18 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main>
-          <h1 className="p-5 text-3xl font-bold">Stock App</h1>
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
+        <main className="p-5">
+          <nav className='flex items-center justify-between max-w-7xl mx-auto'>
+            <h1 className=" text-3xl font-bold">Stock App</h1>
+            Signed in as {session.user.email} <br />
+            {/* <img src={session.user.image} alt="profile" /> */}
+            <button
+              className="bg-gray-400 px-4 rounded py-2"
+              onClick={() => signOut()}
+            >
+              Sign out
+            </button>
+          </nav>
         </main>
       </div>
     );
