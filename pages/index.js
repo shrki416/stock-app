@@ -15,7 +15,7 @@ export default function Home() {
         </Head>
 
         <main className="p-5">
-          <nav className='flex items-center justify-between max-w-7xl mx-auto'>
+          <nav className="flex items-center justify-between max-w-7xl mx-auto">
             <h1 className=" text-3xl font-bold">Stock App</h1>
             Signed in as {session.user.email} <br />
             {/* <img src={session.user.image} alt="profile" /> */}
@@ -32,9 +32,13 @@ export default function Home() {
   }
 
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <div className='flex w-full h-screen items-center justify-center'>
+      <div className="flex flex-col items-center">
+        <p className='font-mono text-xl'>Not signed in</p>
+        <button className="px-3 py-2 bg-green-500 text-gray-700 rounded mt-4" onClick={() => signIn()}>
+          Sign in
+        </button>
+      </div>
+    </div>
   );
 }
