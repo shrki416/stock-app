@@ -16,6 +16,17 @@ export default NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    // Email({
+    //   server: {
+    //     host: "",
+    //     port: '',
+    //     auth: {
+    //       user: "",
+    //       pass: "",
+    //     },
+    //   from: '',
+    //   },
+    // })
   ],
   // pages: {
   //   signIn: "/api/auth/signin",

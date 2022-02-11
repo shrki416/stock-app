@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Head from "next/head";
+import Link from 'next/link';
 
 export default function Home() {
   const { data: session } = useSession();
@@ -21,7 +22,7 @@ export default function Home() {
             {/* <img src={session.user.image} alt="profile" /> */}
             <button
               className="bg-gray-400 px-4 rounded py-2"
-              onClick={() => signOut()}
+              onClick={signOut}
             >
               Sign out
             </button>
@@ -35,7 +36,7 @@ export default function Home() {
     <div className='flex w-full h-screen items-center justify-center'>
       <div className="flex flex-col items-center">
         <p className='font-mono text-xl'>Not signed in</p>
-        <button className="px-3 py-2 bg-green-500 text-gray-700 rounded mt-4" onClick={() => signIn()}>
+        <button className="px-3 py-2 bg-green-500 text-gray-700 rounded mt-4" onClick={signIn}>
           Sign in
         </button>
       </div>
