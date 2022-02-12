@@ -54,3 +54,18 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+// model Stock {
+//   id         String  @id @default(cuid())
+//   userId     String
+//   symbol     String  @unique
+//   name       String?
+//   price      Float?
+//   change     Float?
+//   changePct  Float?
+//   volume     Int?
+//   marketCap  Int?
+//   createdAt  DateTime
+//   updatedAt  DateTime
+//   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
