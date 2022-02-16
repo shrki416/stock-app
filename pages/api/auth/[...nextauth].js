@@ -28,9 +28,6 @@ export default NextAuth({
     //   },
     // })
   ],
-  // pages: {
-  //   signIn: "/api/auth/signin",
-  // },
   JWT: {
     signInKey: process.env.JWT_SIGNING_PRIVATE_KEY,
   },
