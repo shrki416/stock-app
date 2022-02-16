@@ -1,10 +1,20 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Head from "next/head";
-import Link from 'next/link';
+import Link from "next/link";
+import SignIn from "../components/SignIn";
+import useSWR from "swr";
 
 export default function Home() {
   const { data: session } = useSession();
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+  const { data, error } = useSWR("/api/user", fetcher);
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  console.log(data);
 
   if (session) {
     return (
@@ -20,26 +30,23 @@ export default function Home() {
             <h1 className=" text-3xl font-bold">Stock App</h1>
             Signed in as {session.user.email} <br />
             {/* <img src={session.user.image} alt="profile" /> */}
-            <button
-              className="bg-gray-400 px-4 rounded py-2"
-              onClick={signOut}
-            >
+            <button className="bg-gray-400 px-4 rounded py-2" onClick={signOut}>
               Sign out
             </button>
           </nav>
         </main>
+        <ul>
+          {data.map((user) => (
+            <li key={user.id}>{user.email}</li>
+          ))}
+        </ul>
       </div>
     );
   }
 
   return (
-    <div className='flex w-full h-screen items-center justify-center'>
-      <div className="flex flex-col items-center">
-        <p className='font-mono text-xl'>Not signed in</p>
-        <button className="px-3 py-2 bg-green-500 text-gray-700 rounded mt-4" onClick={signIn}>
-          Sign in
-        </button>
-      </div>
+    <div className="flex w-full h-screen items-center justify-center">
+      <SignIn signIn={signIn} />
     </div>
   );
 }
