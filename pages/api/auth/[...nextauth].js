@@ -2,7 +2,7 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from '../../../lib/prisma';
+import prisma from "../../../lib/prisma";
 
 export default NextAuth({
   providers: [
@@ -31,4 +31,7 @@ export default NextAuth({
   },
   session: { strategy: "jwt" },
   adapter: PrismaAdapter(prisma),
+  pages: {
+    signIn: "/auth/login",
+  },
 });
